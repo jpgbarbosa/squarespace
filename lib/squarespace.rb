@@ -1,6 +1,7 @@
 require "squarespace/client"
 require "squarespace/configuration"
 require "squarespace/order"
+require "squarespace/product"
 require "squarespace/version"
 
 module Squarespace

@@ -115,6 +115,13 @@ module Squarespace
       commerce_request("post", "#{order_id}/fulfillments", {}, {}, request_body.to_json)
     end
 
+    def create_product(request_body)
+      product_response = commerce_request("post", "commerce/products", {}, {}, request_body.to_json)
+
+      logger.debug("Order response: #{product_response.body}")
+      Product.new(JSON.parse(product_response.body))
+    end
+
     def commerce_request(method, route = "", headers = {}, parameters = {}, body = nil)
       connection(@commerce_url).send(method.downcase) do |req|
         if method.eql?("post")

@@ -1,0 +1,136 @@
+{
+  // Required; string. Product type indicator.
+  // `PHYSICAL` is the only supported value at this time.
+  "type": "PHYSICAL",
+  // Required; string. Identifier of the products Store Page.
+  // Use the endpoint below to retrieve the id for a Store Page.
+  // https://developers.squarespace.com/commerce-apis/retrieve-all-store-pages
+  "storePageId": "5d7ba084a63ee8bb410ce0b1",
+  // Optional; string, 200 char limit. Product name.
+  "name": "Artisanal Steak Dry Rub",
+  // Optional; string, 102,400 char limit.
+  // Long-form product description represented in HTML.
+  // Value must be a simple snippet, so common block and formatting elements,
+  // links, and certain safe CSS properties in the `style` attribute are allowed.
+  "description": "<p>This can be a few words or even a few <i>paragraphs</i>.</p>",
+  // Optional; string, 200 char limit. URL slug for the new product.
+  // Value can only consist of alphanumeric characters and non-contiguous hyphens.
+  // The slug must also be unique among the products of a Store Page (formerly Products  Page.
+  // Slugs are automatically downcased for the new product.
+  "urlSlug": "artisanal-steak-dry-rub",
+  // Optional; array of strings, 100 char limit per string and no more than 100 strings.
+  // Keywords for search and organization purposes.
+  // Strings are not case-sensitive, so the string "steak"
+  // allows both "steak" and "Steak" to be searched on a site.
+  "tags": ["artisanal", "steak"],
+  // Optional; boolean.
+  // Indicates whether the product is available for purchase.
+  // If `true`, the product is listed as ‘Visible` in the Squarespace UI’s product editor;
+  // if `false` the product is marked as `Hidden`.
+  // If not specified, then the new product is marked as `Hidden`.
+  "isVisible": true,
+  // Conditional; array of case-sensitive strings,
+  // 100 char limit per string with no more than six strings.
+  // List of attributes to distinguish variants of the product.
+  // Read the guide below for request validations between this field and the products variants.
+  // https://developers.squarespace.com/commerce-apis/managing-attributes
+  "variantAttributes": ["Flavor"],
+  // Required; array of objects. Array must contain at least one object
+  // but no more than 100 objects.
+  // List of variants of the product.
+  "variants": [
+    {
+      // Required; string, 60 char limit.
+      // Merchant-defined code that identifies the product variant.
+      // Value must be unique among variants. Leading and trailing whitespace is removed.
+      "sku": "SQ0557856",
+      // Required; object. Pricing data for the variant.
+      "pricing": {
+        // Required; object. Amount per unit to charge for the variant.
+        "basePrice": {
+          // Required; ISO 4217 currency code string.
+          "currency": "USD",
+          // Required; string. Monetary amount.
+          // Amount has no currency markers and conforms to the selected
+          // ISO currencys precision (e.g., JPY as 123; USD as 123.00 or 123.
+          // Amount must not be more than 1,000,000.
+          "value": "12.95"
+        },
+        // Optional; boolean.
+        // Indicates whether the variant is sold according to its sale price.
+        // If not specified, then the field defaults to `false` and the variant is not on sale.
+        "onSale": false,
+        // Optional; money object. Amount per unit charged when the variant is on sale.
+        // Conditional; money object. Amount per unit charged when the variant is on sale.
+        // If `onSale` is `false`, the field is not required.
+        // If `onSale` is `true` then all salePrice fields are required.
+        "salePrice": {
+          // Required; ISO 4217 currency code string.
+          // If `onSale` is false; field defaults to the merchant sites currency setting.
+          "currency": "USD",
+          // Required; string. Monetary amount.
+          // Amount has no currency markers and conforms to the selected
+          // ISO currencys precision (e.g., JPY as 123; USD as 123.00 or 123.
+          // Amount must not be more than 1,000,000.
+          // If `onSale` is false, field coalesces to the lesser of this and `basePrice.value`.
+          "value": "0.00"
+        }
+      },
+      // Optional; object. Available stock for the variant.
+      // If stock isn’t provided, then the new variant uses the default values as described.
+      "stock": {
+        // Optional; integer, value must be less than 1,000,000,000.
+        // Number of units that can be purchased.
+        // If not specified, the new variant is not in stock.
+        "quantity": 10,
+        // Optional; boolean. Indicates whether the variant has unlimited stock.
+        // If `true`, the quantity for the new variant is zero.
+        "unlimited": false
+      },
+      // Conditional; object of key-value pairs,
+      // 100 char limit per key and per value with no more than six key-value pairs.
+      // Specifies attribute-value pairs for the variant.
+      // Read the guide below to learn about request validations
+      // between this field and the products attributes.
+      // https://developers.squarespace.com/commerce-apis/managing-attributes
+      "attributes": {
+        "Flavor": "Habanero"
+      },
+      // Optional; object. Measurements of the variant when it’s shipped.
+      // Values are used for calculating shipping costs at checkout.
+      "shippingMeasurements": {
+        // Optional; object. Weight of the variant.
+        // If not specified, then the new variant uses the default
+        // values described below. Otherwise, all weight fields are required.
+        "weight": {
+          // Required; string. Unit of measurement.
+          // Supported values: `KILOGRAM`, `POUND`,  but it must be based on the merchant site’s
+          // measurement standard (e.g. use `KILOGRAM` for the metric system.
+          // To retrieve the measurement standard, visit the FAQ link and scroll to
+          // ‘How can I determine the Squarespace site that owns a particular API key or OAuth token?`
+          // https://developers.squarespace.com/commerce-apis/faq
+          "unit": "POUND",
+          // Required; decimal. Weight amount.
+          // Amount should be less than 10,000 and rounded to the nearest ten thousandth.
+          // If not specified, then value defaults to 0.0 for the product variant.
+          "value": 2.0
+        },
+        // Optional; object. Physical dimensions of the variant.
+        // If not specified, then the new variant uses the default values described below.
+        // Otherwise, all dimensions fields are required and each decimal field
+        // must be less than 10,000 and rounded to the nearest ten thousandth.
+        "dimensions": {
+          // Required; string. Unit of measurement.
+          // Supported values: `CENTIMETER`,  `INCH`, but it must be based on the merchant site’s
+          "unit": "INCH",
+          // Required; decimal. Length of the variant; defaults to 0.0.
+          "length": 7.0,
+          // Required; decimal. Width of the variant; defaults to 0.0.
+          "width": 5.0,
+          // Required; decimal. Height of the variant; defaults to 0.0.
+          "height": 5.0
+        }
+      }
+    }
+  ]
+}

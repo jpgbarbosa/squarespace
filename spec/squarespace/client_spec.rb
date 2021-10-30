@@ -137,5 +137,18 @@ describe Squarespace::Client do
 
       client.fulfill_order(order_id, shipments, send_notification)
     end
+
+    it "creates a product" do
+      Timecop.freeze
+      body_fixture = JSON.parse(load_fixture("spec/fixtures/create_product_body.json"), symbolize_names: true)
+      send_notification = false
+
+      stub_faraday_request(stub_create_product_object,
+                           "post", "commerce/products",
+                           { "Content-Type" => "application/json", "Authorization" => "Bearer test_key" },
+                           {}, body_fixture.to_json)
+
+      client.create_product(body_fixture)
+    end
   end
 end
