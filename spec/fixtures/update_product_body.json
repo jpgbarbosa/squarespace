@@ -1,0 +1,43 @@
+{
+  // Optional; string, 200 char limit. Product name.
+  "name": "Artisanal Steak Dry Rub",
+  // Optional; string, 102,400 char limit.
+  // Long-form product description represented in HTML.
+  // Value must be a simple snippet, so common block and formatting elements,
+  // links, and certain safe CSS properties in the `style` attribute are allowed.
+  "description": "This can be a few words or even a few paragraphs.",
+  // Optional; string, 200 char limit. URL slug for the new product.
+  // Value can only consist of alphanumeric characters and non-contiguous hyphens.
+  // The slug must also be unique among the products of a Store Page (formerly Products  Page.
+  // Slugs are automatically downcased for the new product.
+  "urlSlug": "artisanal-steak-dry-rub",
+  // Optional; array of strings, 100 char limit per string and no more than 100 strings.
+  // Keywords for search and organization purposes.
+  // Strings are not case-sensitive, so the string "steak"
+  // allows both "steak" and "Steak" to be searched on a site.
+  "tags": ["artisanal", "steak"],
+  // Optional; boolean.
+  // Indicates whether the product is available for purchase.
+  // If `true`, the product is listed as ‘Visible` in the Squarespace UI’s product editor;
+  // if `false` the product is marked as `Hidden`.
+  // If not specified, then the new product is marked as `Hidden`.
+  "isVisible": true,
+  // Conditional; array of case-sensitive strings,
+  // 100 char limit per string with no more than six strings.
+  // A `null` array is not allowed else the request fails.
+  // List of attributes to distinguish variants of the product.
+  // Read the guide below for request validations between this field and the products variants.
+  // https://developers.squarespace.com/commerce-apis/manage-attributes
+  "variantAttributes": ["Flavor"],
+  // Optional; object.
+  // Options for search engine optimization.
+  "seoOptions": {
+    // Optional; string, 100 char limit.
+    // Page title that appears in search results and browser tabs;
+    // indexed by search engines
+    "title": "Artisanal Cooking",
+    // Optional; string, 400 char limit.
+    // Page description that appears below the title or link in search results.
+    "description": "A one-stop shop for artisanal cooking tips and products."
+  }
+}

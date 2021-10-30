@@ -62,6 +62,10 @@ def stub_create_product_object
   stub_faraday_response(201, load_fixture("spec/fixtures/create_product_response.json"))
 end
 
+def stub_update_product_object
+  stub_faraday_response(204, load_fixture("spec/fixtures/update_product_response.json"))
+end
+
 def load_json_fixture(path)
   File.read(path)
 end

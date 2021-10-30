@@ -11,6 +11,7 @@ describe Squarespace::Client do
   let(:api_key) { "test_key" }
   let(:base_commerce_url) { "#{api_url}/0.1/commerce/orders" }
   let(:order_id) { "585d498fdee9f31a60284a37" }
+  let(:product_id) { "5ed539b66505ca7c5f4a3a5a" }
 
   context "For the Squarespace API" do
     it "create a connection to squarespace" do
@@ -149,6 +150,19 @@ describe Squarespace::Client do
                            {}, body_fixture.to_json)
 
       client.create_product(body_fixture)
+    end
+
+    it "updates a product" do
+      Timecop.freeze
+      body_fixture = JSON.parse(load_fixture("spec/fixtures/update_product_body.json"), symbolize_names: true)
+      send_notification = false
+
+      stub_faraday_request(stub_update_product_object,
+                           "post", "commerce/products/#{product_id}",
+                           { "Content-Type" => "application/json", "Authorization" => "Bearer test_key" },
+                           {}, body_fixture.to_json)
+
+      client.update_product(product_id, body_fixture)
     end
   end
 end

@@ -1,0 +1,73 @@
+{
+  "id": "5ed539b66505ca7c5f4a3a5a",
+  "type": "PHYSICAL",
+  "storePageId": "5d7ba084a63ee8bb410ce0b1",
+  "name": "Artisanal Steak Dry Rub",
+  "description": "<p>This can be a few words or even a few <i>paragraphs</i>.</p>",
+  "url": "https://example.com/store/artisanal-steak-dry-rub",
+  "urlSlug": "artisanal-steak-dry-rub",
+  "tags": ["artisanal", "steak"],
+  "isVisible": true,
+  "seoOptions": {
+    "title": "Artisanal Cooking",
+    "description": "A one-stop shop for artisanal cooking tips and products."
+  },
+  "variantAttributes": ["Flavor"],
+  "variants": [{
+    "id": "6b76dad2-a15a-4dfc-97e1-47427e12061f",
+    "sku": "SQ0557856",
+    "pricing": {
+      "basePrice": {
+        "currency": "USD",
+        "value": "12.95"
+      },
+      "salePrice": {
+        "currency": "USD",
+        "value": "0.00"
+      },
+      "onSale": false
+    },
+    "stock": {
+      "quantity": 10,
+      "unlimited": false
+    },
+    "attributes": {
+      "Flavor": "Habanero"
+    },
+    "shippingMeasurements": {
+
+      "weight": {
+        "unit": "POUND",
+        "value": 2.0
+      },
+      "dimensions": {
+        "unit": "INCH",
+        "length": 7.0,
+        "width": 5.0,
+        "height": 5.0
+      }
+    },
+    "image": {
+      "id": "5ed539bc8367410cdc0c984a",
+      "title": "Steak",
+      "url": "https://static1.squarespace.com/static/steak.png",
+      "originalSize": {
+        "width": 512,
+        "height": 256
+      },
+      "availableFormats": ["100w", "300w", "500w"]
+    }
+  }],
+  "images": [{
+    "id": "5ed539bc8367410cdc0c984a",
+    "altText": "Steak",
+    "url": "https://static1.squarespace.com/static/steak.png",
+    "originalSize": {
+      "width": 512,
+      "height": 256
+    },
+    "availableFormats": ["100w", "300w", "500w"]
+  }],
+  "createdOn": "2020-06-01T17:24:06.048Z",
+  "modifiedOn": "2020-06-04T20:12:18.163Z"
+}
